@@ -1,0 +1,43 @@
+﻿
+<div class="row" ng-app="store">
+    <div ng-controller="StoreController as ctrl" ng-init="ctrl.getGrupos()">
+        <div class="col-md-6">
+            <h2>Message List</h2>
+            <p>
+               Mensagens disponiveis SPB
+            </p>
+            <label>Tipo de Mensagem:</label>
+            <select name="singleSelect" id="singleSelect" ng-model="ctrl.grupoSelecionado">
+            <option value="">---Please select---</option> <!-- not selected / blank option -->            
+                <option
+                        ng-repeat="grupo in ctrl.grupos"
+                        value="{{grupo}}">
+                    {{grupo.nome}}
+                </option>
+            </select>
+            <button class="btn btn-sm" ng-click="ctrl.getMensagensDoGrupo()">Buscar Mensagens</button>
+            <br>
+
+            <label>Mensagem:</label>
+            <select name="singleSelect" id="singleSelect" ng-model="ctrl.mensagemSelecionada">
+                <option value="">---Please select---</option> <!-- not selected / blank option -->
+                <option ng-repeat="mensagem in ctrl.mensagensDisponiveis track by $index"
+                        value="{{mensagem.html}}">
+                    {{mensagem.nome}}
+                </option>
+            </select><br>
+            <button class="btn btn-sm" ng-click="ctrl.exibe()">Exibir</button>
+            <br>
+            
+           
+        </div>
+        <div class="col-md-6">
+            <h2>Mensagens</h2>
+            <div name="output" id="output">
+
+            </div>
+        </div>
+
+    </div>
+    
+</div>
